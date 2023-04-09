@@ -1,13 +1,22 @@
 @use 'global';
 
+section {
+    padding: 4rem 2rem;
+    @include global.flex(column, center, center, 1rem);
+}
+img {
+    width: 100%;
+    height: auto;
+}
 
 header {
-    padding: 2rem 1rem 5rem;
+    padding: 2rem 1.5rem 5rem;
 
-    background: url('../images/bg-pattern-intro-mobile.svg') no-repeat, global.$gradient-nav;
+    background: url('../images/bg-pattern-intro-mobile.svg') no-repeat -17rem -14rem, global.$gradient-nav;
+    background-size: 300%;
     text-align: center;
     color: global.$white;
-    border-bottom-left-radius: 5rem;
+    border-bottom-left-radius: 6rem;
 }
 .header-top {
     @include global.flex(row, space-between, center);
@@ -16,24 +25,23 @@ header {
         width: 4rem;
     }
 }
-.menu {
+.menu, .submenu {
     display:none;
 }
+.menu-open {
+    display: block;
+}
 .btn-menu {
-    width: 40px;
-    height: 40px;
+    width: 2rem;
+    height: 2rem;
 
     background: url('../images/icon-hamburger.svg') no-repeat;
     border: none;
 }
 
 .header-section {
-    padding: 4rem 2rem;
-
-    @include global.flex(column, center, center);
-    gap: 1rem;
-
     button {
+        margin-top: 1rem;
         padding: 0.5rem 1rem;
         border-radius: 2rem;
 
@@ -41,13 +49,149 @@ header {
         font-weight: bold;
     }
 }
+
 .btn-left {
-    background-color: global.$white;
-    color: global.$light-red;
-    border: 1px solid global.$white;
+    @extend %btn-white;
+
+    &:hover {
+        @include global.btn(global.$very-light-red, global.$white, global.$very-light-red);
+        cursor: pointer;
+    }
 }
 .btn-right {
-    background-color: transparent;
-    color: global.$white;
-    border: 1px solid global.$white;
+    @include global.btn(transparent, global.$white, global.$white);
+
+    &:hover {
+        @extend %btn-white;
+        cursor: pointer
+    }
+}
+
+.text {
+    @include global.flex(column, center, center, 1rem);
+    h2, h3 {
+        margin-top: 2rem;
+        font-size: 1.7rem;
+    }
+}
+
+.section-2 {
+    margin-top: 10rem;
+    background:  url('../images/bg-pattern-circles.svg') no-repeat -5rem -15rem, global.$gradient-body;
+    background-size: 150%;
+    border-radius: 0 6rem 0 6rem;
+
+    img {
+        margin: -13rem 0 0;
+    }
+}
+
+footer {
+    padding: 5rem 1rem;
+
+    background-color: global.$very-dark-black-blue;
+    border-top-right-radius: 6rem;
+    text-align: center;
+
+    .logo {
+        width: 7rem;
+        margin-bottom: 3rem;
+    }
+}
+.anchors {
+    @include global.flex(column, center, center, 2rem);
+    
+    h4 {
+        margin-bottom: 1rem;
+        font-size: larger;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+}
+
+aside {
+    @include global.text;
+
+    a:hover {
+        color: global.$very-light-red;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    h1, h2, h3, h4, p, li, a {
+        text-align: left;
+    }
+
+    header {
+        background: url('../images/bg-pattern-intro-desktop.svg') no-repeat -35rem , global.$gradient-light-red;
+        background-size: 200%;
+    }
+    .header-top {
+        justify-content: start;
+
+        .logo {
+            margin: 0 2rem 0 5rem;
+        }
+    }
+    .btn-menu {
+        display: none;
+    }
+    .menu {
+        width: 80vw;
+        @include global.flex(row, space-between, center);
+        
+        ul {
+            @include global.flex(row, center, center, 1rem);
+        }
+        .submenu {
+            ul {
+                padding: 1rem;
+                @include global.flex(column, center, start);
+                background-color: global.$white;
+                border-radius: .3rem;
+            }
+            a {
+                color: global.$very-dark-black-blue;
+            }
+        }
+        button {
+            padding: 0.5rem 1rem;
+
+            @include global.btn(transparent, global.$white, transparent);
+        }
+        .btn-signup {
+            @include global.btn (global.$white, global.$light-red, global.$white);
+            border-radius: 2rem;
+
+            &:hover {
+                @include global.btn(global.$very-light-red, global.$white, global.$very-light-red);
+            }
+        }
+    }
+    
+    main section {
+        margin: 10rem 0;
+    }
+    .content, .section-2, .section-3 {
+        padding: 0 10rem;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5rem;
+    }
+    .text {
+        align-items: start;
+
+    }
+    .content picture {
+        grid-area: 1 / 2 / 2 / 3;
+    }
+
+    footer {
+        padding-left: 10rem;
+        @include global.flex(row, start, start, 10rem);
+    }
+    .anchors {
+        @include global.flex(row, center, start, 8rem);
+    }
 }
