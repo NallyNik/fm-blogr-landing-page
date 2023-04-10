@@ -14,21 +14,21 @@
   text-decoration: none;
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3 {
   font-family: "Overpass", sans-serif;
   color: hsl(208, 49%, 24%);
   line-height: 1.2;
   text-align: center;
 }
 
-p, a {
+p, li, a {
   font-family: "Ubuntu", sans-serif;
   color: hsl(207, 13%, 34%);
   line-height: 1.9;
   text-align: center;
 }
 
-header h1, header h2, header h3, header h4, header p, header a, .section-2 h1, .section-2 h2, .section-2 h3, .section-2 h4, .section-2 p, .section-2 a, footer h1, footer h2, footer h3, footer h4, footer p, footer a {
+header h1, header h2, header h3, header p, header li, header a, .section-2 h1, .section-2 h2, .section-2 h3, .section-2 p, .section-2 li, .section-2 a, footer h1, footer h2, footer h3, footer p, footer li, footer a {
   color: hsl(0, 0%, 100%);
 }
 
@@ -212,7 +212,7 @@ footer .logo {
   align-items: center;
   gap: 2rem;
 }
-.anchors h4 {
+.anchors li:first-child {
   margin-bottom: 1rem;
   font-size: larger;
 }

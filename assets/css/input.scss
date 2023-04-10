@@ -161,7 +161,7 @@ footer {
 .anchors {
     @include global.flex(column, center, center, 2rem);
     
-    h4 {
+    li:first-child {
         margin-bottom: 1rem;
         font-size: larger;
     }

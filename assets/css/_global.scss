@@ -51,18 +51,18 @@ $gradient-body: linear-gradient($very-dark-gray-blue, $very-dark-desaturated-blu
     text-decoration: none;
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3 {
     font-family: 'Overpass', sans-serif;
     color: $very-dark-blue;
     @include text;
 }
-p, a {
+p, li, a {
     font-family: 'Ubuntu', sans-serif;
     color: $very-dark-grayish-blue;
     @include text(1.9);
 }
 header, .section-2, footer {
-    h1, h2, h3, h4, p, a {
+    h1, h2, h3, p, li, a {
         color: $white;
     }
 }
