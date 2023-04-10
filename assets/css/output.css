@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Overpass:wght@300;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap");
 .btn-left, .btn-right:hover {
-  background-color: hsl(0, 0%, 100%);
+  background: hsl(0, 0%, 100%);
   color: hsl(353, 100%, 62%);
   border: 1px solid hsl(0, 0%, 100%);
 }
@@ -66,19 +66,86 @@ header {
   width: 4rem;
 }
 
-.menu, .submenu {
-  display: none;
-}
-
-.menu-open {
-  display: block;
-}
-
 .btn-menu {
   width: 2rem;
   height: 2rem;
   background: url("../images/icon-hamburger.svg") no-repeat;
   border: none;
+}
+.btn-menu:focus {
+  background: url("../images/icon-close.svg") no-repeat;
+}
+
+.menu, .submenu {
+  display: none;
+  font-weight: bold;
+}
+
+.open {
+  display: block;
+}
+
+.menu {
+  padding: 1rem;
+  position: absolute;
+  top: 5rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 0.3rem;
+}
+.menu a {
+  color: hsl(240, 10%, 16%);
+}
+
+.menu-item::after {
+  content: "";
+  margin-left: 0.5rem;
+  display: inline-block;
+  width: 1rem;
+  height: 0.5rem;
+  background: url("../images/icon-arrow-dark.svg") no-repeat;
+  background-size: contain;
+}
+
+.open::after {
+  transform: rotate(180deg);
+}
+
+.submenu {
+  margin: 1rem;
+  padding: 1rem;
+  background-color: hsl(240, 2%, 79%);
+  border-radius: 0.3rem;
+}
+.submenu a {
+  color: hsl(207, 13%, 34%);
+}
+
+.menu-buttons {
+  margin: 1rem;
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  gap: 1.5rem;
+  border-top: 1px solid hsl(240, 2%, 79%);
+}
+.menu-buttons button:first-child {
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: none;
+  background-color: transparent;
+}
+
+.btn-signup {
+  padding: 1rem 2rem;
+  border-radius: 2rem;
+  background: linear-gradient(to right, hsl(13, 100%, 72%), hsl(353, 100%, 62%));
+  color: hsl(0, 0%, 100%);
+  border: 1px solid transparent;
 }
 
 .header-section button {
@@ -90,14 +157,14 @@ header {
 }
 
 .btn-left:hover {
-  background-color: hsl(13, 100%, 72%);
+  background: hsl(13, 100%, 72%);
   color: hsl(0, 0%, 100%);
   border: 1px solid hsl(13, 100%, 72%);
   cursor: pointer;
 }
 
 .btn-right {
-  background-color: transparent;
+  background: transparent;
   color: hsl(0, 0%, 100%);
   border: 1px solid hsl(0, 0%, 100%);
 }
@@ -166,68 +233,91 @@ aside a:hover {
     text-align: left;
   }
   header {
-    background: url("../images/bg-pattern-intro-desktop.svg") no-repeat -35rem, linear-gradient(to right, hsl(13, 100%, 72%), hsl(353, 100%, 62%));
-    background-size: 200%;
+    background: url("../images/bg-pattern-intro-desktop.svg") no-repeat -25rem -80rem, linear-gradient(to right, hsl(13, 100%, 72%), hsl(353, 100%, 62%));
+    background-size: 210%;
   }
   .header-top {
+    padding: 0 6rem;
     justify-content: start;
-  }
-  .header-top .logo {
-    margin: 0 2rem 0 5rem;
   }
   .btn-menu {
     display: none;
   }
   .menu {
     width: 80vw;
+    position: relative;
+    top: 0;
+    padding: 0;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     gap: 0;
+    background-color: transparent;
   }
   .menu ul {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: 3rem;
   }
-  .menu .submenu ul {
-    padding: 1rem;
+  .menu a {
+    color: hsl(0, 0%, 100%);
+  }
+  .submenu {
+    position: absolute;
+    width: 8rem;
+    margin: 0 0 0 -1rem;
+    background-color: hsl(0, 0%, 100%);
+    font-weight: normal;
+  }
+  .submenu ul {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: start;
     gap: 0;
-    background-color: hsl(0, 0%, 100%);
-    border-radius: 0.3rem;
   }
-  .menu .submenu a {
+  .submenu a {
+    color: hsl(207, 13%, 34%);
+  }
+  .submenu a:hover {
     color: hsl(240, 10%, 16%);
+    font-weight: bold;
   }
-  .menu button {
-    padding: 0.5rem 1rem;
-    background-color: transparent;
+  .menu-item:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  .menu-item::after {
+    background: url("../images/icon-arrow-light.svg") no-repeat;
+  }
+  .menu-buttons {
+    flex-direction: row;
+    border: none;
+  }
+  .menu-buttons button:first-child {
     color: hsl(0, 0%, 100%);
-    border: 1px solid transparent;
   }
-  .menu .btn-signup {
-    background-color: hsl(0, 0%, 100%);
+  .btn-signup {
+    background: hsl(0, 0%, 100%);
     color: hsl(353, 100%, 62%);
     border: 1px solid hsl(0, 0%, 100%);
     border-radius: 2rem;
   }
-  .menu .btn-signup:hover {
-    background-color: hsl(13, 100%, 72%);
+  .btn-signup:hover {
+    background: hsl(13, 100%, 72%);
     color: hsl(0, 0%, 100%);
     border: 1px solid hsl(13, 100%, 72%);
   }
+  h1 {
+    font-size: 4rem;
+  }
   main section {
-    margin: 10rem 0;
+    padding: 10rem 10rem;
   }
   .content, .section-2, .section-3 {
-    padding: 0 10rem;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 5rem;
@@ -235,8 +325,30 @@ aside a:hover {
   .text {
     align-items: start;
   }
-  .content picture {
+  h2 {
+    font-size: 2rem;
+  }
+  .section-1 {
+    overflow: hidden;
+  }
+  .section-1 h2 {
+    margin-bottom: -2rem;
+  }
+  .section-1 picture {
     grid-area: 1/2/2/3;
+    margin: -5rem -28rem -5rem 0;
+  }
+  .section-2 {
+    padding: 0 10rem 0;
+    background: url("../images/bg-pattern-circles.svg") no-repeat -10rem -29rem, linear-gradient(hsl(237, 17%, 21%), hsl(237, 23%, 32%));
+    background-size: 65%;
+  }
+  .section-2 img {
+    margin: -4rem 0 -6rem;
+  }
+  .section-3 picture {
+    overflow: hidden;
+    margin: -5rem 0 -5rem -22rem;
   }
   footer {
     padding-left: 10rem;

@@ -25,20 +25,80 @@ header {
         width: 4rem;
     }
 }
-.menu, .submenu {
-    display:none;
-}
-.menu-open {
-    display: block;
-}
 .btn-menu {
     width: 2rem;
     height: 2rem;
 
     background: url('../images/icon-hamburger.svg') no-repeat;
     border: none;
-}
 
+    &:focus {
+        background: url('../images/icon-close.svg') no-repeat;
+    }
+}
+.menu, .submenu {
+    display:none;
+    font-weight: bold;
+}
+.open {
+    display: block;
+}
+.menu {
+    padding: 1rem;
+    position: absolute;
+    top: 5rem;
+    left: 1.5rem;
+    right: 1.5rem;
+
+    background-color: global.$white;
+    border-radius: .3rem;
+    a {
+        color: global.$very-dark-black-blue;
+    }
+}
+.menu-item::after {
+    content: '';
+    margin-left: .5rem;
+    display: inline-block;
+    width: 1rem;
+    height: .5rem;
+    background: url('../images/icon-arrow-dark.svg') no-repeat;
+    background-size: contain;
+}
+.open::after {
+    transform: rotate(180deg);
+}
+.submenu {
+    margin: 1rem;
+    padding: 1rem;
+
+    background-color: global.$grayish-blue;
+    border-radius: .3rem;
+    a {
+        color: global.$very-dark-grayish-blue;
+    }
+}
+.menu-buttons {
+    margin: 1rem;
+    padding-top: 2rem;
+    @include global.flex(column, center, center);
+    gap: 1.5rem;
+
+    border-top: 1px solid global.$grayish-blue;
+
+    & button:first-child {
+        font-size: 1.2rem;
+        font-weight: bold;
+        border:none;
+        background-color: transparent;
+    }
+}
+.btn-signup {
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+
+    @include global.btn(global.$gradient-light-red, global.$white, transparent);
+}
 .header-section {
     button {
         margin-top: 1rem;
@@ -124,67 +184,112 @@ aside {
     }
 
     header {
-        background: url('../images/bg-pattern-intro-desktop.svg') no-repeat -35rem , global.$gradient-light-red;
-        background-size: 200%;
+        background: url('../images/bg-pattern-intro-desktop.svg') no-repeat -25rem -80rem, global.$gradient-light-red;
+        background-size: 210%;
     }
     .header-top {
+        padding: 0 6rem;
         justify-content: start;
-
-        .logo {
-            margin: 0 2rem 0 5rem;
-        }
     }
     .btn-menu {
         display: none;
     }
     .menu {
         width: 80vw;
+        position: relative;
+        top: 0;
+        padding: 0;
         @include global.flex(row, space-between, center);
-        
+        background-color: transparent;
+
         ul {
-            @include global.flex(row, center, center, 1rem);
+            @include global.flex(row, center, center, 3rem);
         }
-        .submenu {
-            ul {
-                padding: 1rem;
-                @include global.flex(column, center, start);
-                background-color: global.$white;
-                border-radius: .3rem;
-            }
-            a {
-                color: global.$very-dark-black-blue;
-            }
-        }
-        button {
-            padding: 0.5rem 1rem;
-
-            @include global.btn(transparent, global.$white, transparent);
-        }
-        .btn-signup {
-            @include global.btn (global.$white, global.$light-red, global.$white);
-            border-radius: 2rem;
-
-            &:hover {
-                @include global.btn(global.$very-light-red, global.$white, global.$very-light-red);
-            }
+        a {
+            color: global.$white;
         }
     }
-    
+    .submenu {
+        position: absolute;
+        width: 8rem;
+        margin: 0 0 0 -1rem;
+
+        background-color: global.$white;
+        font-weight: normal;
+
+        ul {
+            @include global.flex(column, center, start);
+        }
+        a {
+            color: global.$very-dark-grayish-blue;
+        }
+        a:hover {
+            color: global.$very-dark-black-blue;
+            font-weight: bold;
+        }
+    }
+    .menu-item:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+    .menu-item::after {
+        background: url('../images/icon-arrow-light.svg') no-repeat;
+    }
+    .menu-buttons {
+        flex-direction: row;
+        border: none;
+
+        & button:first-child {
+             color: global.$white;
+        }
+    }
+    .btn-signup {
+        @include global.btn (global.$white, global.$light-red, global.$white);
+        border-radius: 2rem;
+        
+        &:hover {
+            @include global.btn(global.$very-light-red, global.$white, global.$very-light-red);
+        }
+    }
+    h1 {
+        font-size: 4rem;
+    }
     main section {
-        margin: 10rem 0;
+        padding: 10rem 10rem;
     }
     .content, .section-2, .section-3 {
-        padding: 0 10rem;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 5rem;
     }
     .text {
         align-items: start;
-
     }
-    .content picture {
-        grid-area: 1 / 2 / 2 / 3;
+    h2 {
+        font-size: 2rem;
+    }
+    .section-1 {
+        overflow: hidden;
+        h2 {
+            margin-bottom: -2rem;
+        }
+        picture {
+            grid-area: 1 / 2 / 2 / 3;
+            margin: -5rem -28rem -5rem 0;
+        }
+    }
+    .section-2 {
+        padding: 0 10rem 0;
+        background:  url('../images/bg-pattern-circles.svg') no-repeat -10rem -29rem, global.$gradient-body;
+        background-size: 65%;
+
+        img {
+            margin: -4rem 0 -6rem;
+        }
+    }
+    .section-3 picture {
+        overflow: hidden;
+        margin: -5rem 0 -5rem -22rem;
     }
 
     footer {

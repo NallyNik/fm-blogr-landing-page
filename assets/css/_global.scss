@@ -29,7 +29,7 @@ $gradient-body: linear-gradient($very-dark-gray-blue, $very-dark-desaturated-blu
 }
 
 @mixin btn ($bg-color, $color, $border-color) {
-    background-color: $bg-color;
+    background: $bg-color;
     color: $color;
     border: 1px solid $border-color;
 }
